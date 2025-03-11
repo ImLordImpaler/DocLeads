@@ -12,8 +12,7 @@ class DoctorHandler:
         self.get_data = request.query_params.dict() 
 
         self.return_fields = [
-            'id','name','dob','phone', 'years_of_experience', 'email', 'speciality__name',
-            'doc_image', 'consulation_fee'
+            'id', 'name', 'dob', 'years_of_experience', 'speciality__name', 'doc_image', 'consulation_fee', 'user__phone','user__email'
         ]
 
     def get_doctor(self, pk):
@@ -29,6 +28,8 @@ class DoctorHandler:
 
     def create_doctor(self, **kwargs):
         try:
+            return "Use Registration API instead for Create Doctor"
+
             kwargs,password = self.get_doctor_creation_details()
             doctor = Doctor.objects.create(**kwargs)
 
@@ -48,7 +49,7 @@ class DoctorHandler:
             except Speciality.DoesNotExist as E:
                 raise Exception("No Speciality found")
             
-            kwargs['phone'] = self.post_data['phone']
+            # kwargs['phone'] = self.post_data['phone']
 
             password = self.post_data['password']
             password1 = self.post_data['password1']
@@ -133,10 +134,11 @@ class PatientHandler:
         self.request = request
         self.post_data = request.data
         self.get_data = request.query_params.dict() 
-        self.return_fields = ['name','age','phone','email']
+        self.return_fields = ['name','age','user__phone','user__email']
 
     def create_patient(self):
         try:
+            return "Use Registration API instead for Create Doctor", 200
             kwargs,password = self.fill_patient_data()
             obj = Patient.objects.create(**kwargs)
 

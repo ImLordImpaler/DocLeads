@@ -10,9 +10,6 @@ class Doctor(models.Model):
     speciality = models.ForeignKey('Speciality' ,null=True, blank=True, on_delete=models.CASCADE)
     dob = models.DateField(null=True, blank=True)
     years_of_experience = models.IntegerField(default=1)
-    phone = models.CharField(max_length=10, unique=True)
-    email = models.EmailField(max_length=30,null=True, blank=True, unique=True)
-
     doc_image = models.CharField(max_length=200, default=settings.DEFAULT_IMAGE_URL)
     consulation_fee = models.IntegerField(default=100)
     doc_meta_data = models.JSONField(default=dict, blank=True)  # Store additional metadata as needed
@@ -57,8 +54,8 @@ class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
     age = models.IntegerField(default=10)
-    phone = models.CharField(max_length=10, unique=True)
-    email = models.EmailField(max_length=30, blank=True, null=True, unique=True)
+
+    paitent_meta_data = models.JSONField(default=dict, blank=True) 
     def __str__(self):
         return self.name
     

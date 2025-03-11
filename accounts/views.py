@@ -25,7 +25,6 @@ class AuthViewSet(ViewSet):
         status,response = obj.register()
         return Response(data=response, status=status)
     
-
     def send_otp(self, request):
         obj = AuthHandler(request)
         status,response=obj.send_otp() 

@@ -9,5 +9,5 @@ urlpatterns = [
 
     path('register', AuthViewSet.as_view({'post':'register'})),
     path('send_otp', AuthViewSet.as_view({'post':'send_otp'})),
-    path('check_otp', AuthViewSet.as_view({'post':'check_otp'}))
+    path('check_otp', AuthViewSet.as_view({'get':'check_otp'}))
 ]
