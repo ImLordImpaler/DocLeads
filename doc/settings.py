@@ -96,10 +96,10 @@ WSGI_APPLICATION = 'doc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'mydb'),
-        'USER': os.getenv('DB_USER', 'myuser'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'mypassword'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'NAME': os.getenv('DB_NAME', 'drleads$config'),
+        'USER': os.getenv('DB_USER', 'drleads'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'rachit6399'),
+        'HOST': os.getenv('DB_HOST', 'drleads.mysql.pythonanywhere-services.com'),
         'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
